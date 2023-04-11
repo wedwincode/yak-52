@@ -7,6 +7,8 @@ SoftwareSerial mySerial(10, 11); // RX, TX
 // структура для приёма
 // должна соответствовать отпраляемой
 
+
+
 struct Str {
   bool var_1;
   bool var_2;
@@ -92,19 +94,11 @@ void setup() {
   Serial.begin(9600);
   mySerial.begin(4000);
   // Initialize Button Pins
-  pinMode(2, INPUT_PULLUP);
-  pinMode(3, INPUT_PULLUP);
-  pinMode(4, INPUT_PULLUP);
-  pinMode(5, INPUT_PULLUP);
-  pinMode(6, INPUT_PULLUP);
-  pinMode(7, INPUT_PULLUP);
-  pinMode(8, INPUT_PULLUP);
-  pinMode(9, INPUT_PULLUP);
-//pinMode(10, INPUT_PULLUP);
-//pinMode(11, INPUT_PULLUP);
-  pinMode(12, INPUT_PULLUP);
-  pinMode(13, INPUT_PULLUP);
- 
+  for (int i=2;i<14;i++){
+    if (i!=10)and(i!=11){ 
+      pinMode(i, INPUT_PULLUP);
+    }
+  }
   // Initialize Joystick Library
   Joystick.begin(false); //false = dont send automatically. We will sendState() at the end of the loop
   Joystick.setXAxisRange(-512, 512);

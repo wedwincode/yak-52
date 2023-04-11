@@ -53,18 +53,7 @@ Joystick_ Joystick(0x04,JOYSTICK_TYPE_JOYSTICK,
  
 void setup() {
   // Initialize Button Pins
-  pinMode(2, INPUT_PULLUP);
-  pinMode(3, INPUT_PULLUP);
-  pinMode(4, INPUT_PULLUP);
-  pinMode(5, INPUT_PULLUP);
-  pinMode(6, INPUT_PULLUP);
-  pinMode(7, INPUT_PULLUP);
-  pinMode(8, INPUT_PULLUP);
-  pinMode(9, INPUT_PULLUP);
-  pinMode(10, INPUT_PULLUP);
-  pinMode(11, INPUT_PULLUP);
-  pinMode(12, INPUT_PULLUP);
-  pinMode(13, INPUT_PULLUP);
+  for (int i=2;i<14;i++){pinMode(i, INPUT_PULLUP);}
  
   // Initialize Joystick Library
   Joystick.begin(false); //false = dont send automatically. We will sendState() at the end of the loop
@@ -79,18 +68,7 @@ void setup() {
  
 void loop() {
   //read buttons. Change pins and button numbers here, if you want to have different number connected to different pin
-  Joystick.setButton(0, !digitalRead(2)); //pin 2 LOW means button 0 PRESSED
-  Joystick.setButton(1, !digitalRead(3)); //etc.
-  Joystick.setButton(2, !digitalRead(4));
-  Joystick.setButton(3, !digitalRead(5));
-  Joystick.setButton(4, !digitalRead(6));
-  Joystick.setButton(5, !digitalRead(7));
-  Joystick.setButton(6, !digitalRead(8));
-  Joystick.setButton(7, !digitalRead(9));
-  Joystick.setButton(8, !digitalRead(10));
-  Joystick.setButton(9, !digitalRead(11));
-  Joystick.setButton(10, !digitalRead(12));
-  Joystick.setButton(11, !digitalRead(13));
+  for (int i=0;i<12;i++){Joystick.setButton(i, digitalRead(i+2));}
  
   //read analog axes
   int value = map(analogRead(X_PIN) + X_TRIM , X_MIN, X_MAX, -512, 512) * X_INVERT;
