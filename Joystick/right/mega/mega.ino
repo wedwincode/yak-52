@@ -4,41 +4,18 @@
 // ОТПРАВИТЕЛЬ
 // Ардуины соединены так:
 // отправитель D11 -> приёмник D10
-SoftwareSerial mySerial(10, 11); // RX, TX
+SoftwareSerial mySerial(11, 10); // RX, TX
 
 struct Str {
-  bool var_1;
-  bool var_2;
-  bool var_3;
-  bool var_4;
-  bool var_5;
-  bool var_6;
-  bool var_7;
-  bool var_8;
-  bool var_9;
-  bool var_10;
-  bool var_11;
-  bool var_12;
-  bool var_13;
-  bool var_14;
-  bool var_15;
-  bool var_16;
-  bool var_17;
-  bool var_18;
-  bool var_19;
-  bool var_20;
-  bool var_21;
-  bool var_22;
-  bool var_23;
-  bool var_24;
+  bool arr[27];
 };
 
 void setup() {
   Serial.begin(9600);
   mySerial.begin(4000);
   // Initialize Button Pins
-  for (int i=2;i<28;i++){
-    if (i!=10)and(i!=11){ 
+  for (int i=2;i<31;i++){
+    if ((i!=10)&&(i!=11)){ 
       pinMode(i, INPUT_PULLUP);
     }
   }
@@ -48,8 +25,16 @@ void setup() {
 void loop() {
 
   Str buf;
+
+  for (int i=0;i<8;i++) {
+    buf.arr[i] = digitalRead(i+2);
+  }
+  for (int i=8;i<27;i++) {
+    buf.arr[i] = digitalRead(i+4);
+  }
   
-  buf.var_1 = digitalRead(2);
+
+  /*buf.var_1 = digitalRead(2);
   buf.var_2 = digitalRead(3);
   buf.var_3 = digitalRead(4);
   buf.var_4 = digitalRead(5);
@@ -73,6 +58,9 @@ void loop() {
   buf.var_22 = digitalRead(25);
   buf.var_23 = digitalRead(26);
   buf.var_24 = digitalRead(27);
+  buf.var_25 = digitalRead(28);
+  buf.var_26 = digitalRead(29);
+  buf.var_27 = digitalRead(30);*/
   
   mySerial.write((byte*)&buf, sizeof(buf)); //mySerial.write((byte*)&buf, sizeof(buf));
   

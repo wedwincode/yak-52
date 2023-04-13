@@ -5,21 +5,21 @@
  
 //change these to define which pins your hall effect sensors or potentiometers are connected.
 //to change button connections, scroll down to loop()
-#define X_PIN A0  //крен
-#define Y_PIN A1  //тангаж
+#define X_PIN A4  //крен
+#define Y_PIN A5  //тангаж
 #define R_PIN A2  //рвскание (педали)
-#define T_PIN A3  //РУД
-#define Rx_PIN A4  //шаг винта
-#define Ry_PIN A5  //триммер
+#define T_PIN A0  //РУД
+#define Rx_PIN A1  //шаг винта
+#define Ry_PIN A3  //триммер
 //change these to change trim and limits. Calibrating your joystick in Windows achieves the same thing
-#define X_MIN 0
-#define X_MAX 1023
+#define X_MIN 180
+#define X_MAX 470
 #define X_TRIM 0
 #define X_INVERT 1
 //to invert an axis, change 1 to -1
-#define Y_MIN 0
-#define Y_MAX 1023
-#define Y_TRIM 0
+#define Y_MIN 270
+#define Y_MAX 380
+#define Y_TRIM 20
 #define Y_INVERT 1
  
 #define R_MIN 0
@@ -27,20 +27,20 @@
 #define R_TRIM 0
 #define R_INVERT 1
  
-#define T_MIN 0
-#define T_MAX 1023
+#define T_MIN 132
+#define T_MAX 304
 #define T_TRIM 0
 #define T_INVERT 1
 
-#define Rx_MIN 0
-#define Rx_MAX 1023
+#define Rx_MIN 65
+#define Rx_MAX 300
 #define Rx_TRIM 0
 #define Rx_INVERT 1
 
-#define Ry_MIN 0
-#define Ry_MAX 1023
+#define Ry_MIN 156
+#define Ry_MAX 390
 #define Ry_TRIM 0
-#define Ry_INVERT 1
+#define Ry_INVERT -1
  
 #include <Joystick.h>
  
